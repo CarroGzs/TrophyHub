@@ -1,0 +1,258 @@
+
+
+/* Tema Escuro (Padrão no :root e pela classe .theme-dark) */
+:root,
+.theme-dark {
+    /* Cores de Fundo */
+    --bg-main: #0f0f11;          /* Fundo geral escuro */
+    --bg-card: #18181c;          /* Containers, navbar e cards */
+    --bg-input: #222228;         /* Inputs e campos de texto */
+    --bg-hover: #2d2d35;         /* Efeito hover neutro */
+
+    /* Marca trophyHub (Preto + Laranja Gamer) */
+    --orange-primary: #ff6b00;   /* Laranja principal */
+    --orange-hover: #e05d00;     /* Laranja interativo */
+    --orange-glow: rgba(255, 107, 0, 0.25); /* Glow neon */
+
+    /* Textos e Bordas */
+    --text-primary: #f4f4f7;     /* Texto principal em branco suave */
+    --text-muted: #8e8e99;       /* Textos secundários em cinza */
+    --border-color: #2a2a32;     /* Bordas e separadores */
+
+    /* Específicos de Conquistas */
+    --accent-trophy: #ffb703;    /* Cor de destaque para troféus */
+    --trophy-active-bg: rgba(255, 107, 0, 0.08);
+
+    /* Medidas */
+    --radius: 8px;
+    --transition-speed: 0.25s;
+}
+
+/* Tema Claro (Invocado pela classe .theme-light) */
+.theme-light {
+    /* Cores de Fundo */
+    --bg-main: #f2f2f5;          /* Fundo geral claro */
+    --bg-card: #ffffff;          /* Containers e cards brancos */
+    --bg-input: #e8e8ee;         /* Inputs */
+    --bg-hover: #dcdce3;         /* Efeito hover neutro */
+
+    /* Marca trophyHub */
+    --orange-primary: #e65c00;   /* Laranja ajustado para fundo claro */
+    --orange-hover: #cc5200;
+    --orange-glow: rgba(230, 92, 0, 0.2);
+
+    /* Textos e Bordas */
+    --text-primary: #121214;     /* Texto escuro */
+    --text-muted: #666673;       /* Textos secundários em cinza escuro */
+    --border-color: #d8d8e0;     /* Bordas claras */
+
+    /* Específicos de Conquistas */
+    --accent-trophy: #d97706;
+    --trophy-active-bg: rgba(230, 92, 0, 0.06);
+}
+
+
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+
+
+header, nav {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.logo span {
+    color: var(--orange-primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed) ease;
+}
+
+nav a:hover {
+    color: var(--orange-primary);
+}
+
+
+
+main, .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    flex: 1;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+}
+
+.card:hover {
+    border-color: var(--orange-primary);
+}
+
+
+
+.btn,
+.btn-primary,
+button,
+input[type="submit"] {
+    display: inline-block;
+    background-color: var(--orange-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 12px var(--orange-glow);
+}
+
+.btn:hover,
+.btn-primary:hover,
+button:hover,
+input[type="submit"]:hover {
+    background-color: var(--orange-hover);
+    transform: translateY(-2px);
+}
+
+.btn-theme-toggle {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+.btn-theme-toggle:hover {
+    background-color: var(--bg-hover);
+}
+
+
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 3px var(--orange-glow);
+}
+
+
+
+.trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.trophy-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--border-color);
+    padding: 1.2rem;
+    border-radius: var(--radius);
+    transition: all var(--transition-speed) ease;
+}
+
+.trophy-item.unlocked {
+    border-left-color: var(--orange-primary);
+    background-color: var(--trophy-active-bg);
+}
+
+.trophy-icon {
+    font-size: 2rem;
+    color: var(--text-muted);
+}
+
+.trophy-item.unlocked .trophy-icon {
+    color: var(--accent-trophy);
+}
+
+footer {
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: auto;
+}
