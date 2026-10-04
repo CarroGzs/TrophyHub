@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Sistema de Conquistas{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Bem-vindo, {{ username }}!</h1>
+    <p>Esta é a sua tela Home do Sistema de Conquistas.</p>
+    <p>Aqui você poderá gerenciar suas conquistas oficiais e customizadas.</p>
+    
+    <a href="{{ url_for('auth.logout') }}" class="btn-logout">Sair (Logout)</a>
+</div>
+{% endblock %}

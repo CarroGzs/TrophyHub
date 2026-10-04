@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Criar Conta - trophyHub{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 450px; margin: 2rem auto;">
+    <h2>Criar Conta no trophy<span>Hub</span></h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Crie o seu perfil para guardar e partilhar as suas conquistas.</p>
+
+    <form method="POST" action="{{ url_for('auth.register') }}">
+        <div class="form-group">
+            <label for="username">Nome de Utilizador</label>
+            <input type="text" id="username" name="username" placeholder="Ex: GamerPro99" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Confirmar Palavra-passe</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">Registrar</button>
+    </form>
+
+    <p style="margin-top: 1.5rem; text-align: center; color: var(--text-muted);">
+        Já tem uma conta? <a href="{{ url_for('auth.login') }}">Entrar aqui</a>
+    </p>
+</div>
+{% endblock %}
+regist

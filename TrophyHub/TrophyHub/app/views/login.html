@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Login - trophyHub{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 2rem auto;">
+    <h2>Entrar no trophy<span>Hub</span></h2>
+
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        <div class="form-group">
+            <label for="username">Utilizador</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Entrar</button>
+    </form>
+
+    <p style="margin-top: 1.5rem; text-align: center; color: var(--text-muted);">
+        Ainda não tem conta? <a href="{{ url_for('auth.register') }}">Registre-se aqui</a>
+    </p>
+</div>
+{% endblock %}

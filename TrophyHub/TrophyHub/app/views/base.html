@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}trophyHub{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <!-- Logo trophyHub personalizada com a classe do CSS -->
+        <a href="/" class="logo">trophy<span>Hub</span></a>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if current_user and current_user.is_authenticated %}
+                    <li><a href="/logout">Sair</a></li>
+                {% else %}
+                    <li><a href="/login">Entrar</a></li>
+                {% endif %}
+                <!-- Botão para Alternar o Tema -->
+                <li>
+                    <button id="themeToggle" class="btn-theme-toggle">☀️ / 🌙</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Bloco de Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+    <footer>
+        <p>&copy; {{ 2026 }} trophyHub - Gerencie e mostre as suas conquistas.</p>
+    </footer>
+
+    <!-- Script leve para alternar os Temas (Guardado no navegador) -->
+    <script>
+        const btnToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'light') {
+            document.body.classList.add('theme-light');
+        }
+
+        btnToggle.addEventListener('click', () => {
+            document.body.classList.toggle('theme-light');
+            let theme = 'dark';
+            if (document.body.classList.contains('theme-light')) {
+                theme = 'light';
+            }
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+</html>

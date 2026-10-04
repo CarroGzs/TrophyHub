@@ -1,0 +1,2 @@
+
+from app.middlewares.authmiddlewares import login_required
